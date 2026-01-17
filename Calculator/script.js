@@ -2,30 +2,29 @@ const button_element = document.querySelectorAll("button");
 
 const input_element = document.getElementById("result");
 
-for(let i = 0; i < button_element.length; i++){
-    button_element[i].addEventListener("click", ()=>{
-        const button_value = button_element[i].innerHTML;
+for(let index = 0; index<button_element.length; index++){
+    button_element[index].addEventListener("click", ()=>{
+        const button_value = button_element[index].innerHTML;
         if(button_value === "C"){
-            clear_function();
+            clear_result();
         }
         else if(button_value === "="){
-            calculate_result();
+            calculate();
         }
         else{
             append_value(button_value);
-        };
+        }
     });
 };
 
-function clear_function(){
-    console.log("Clear");
+function clear_result(){
+    input_element.value = "";
 };
 
-function calculate_result(){
-    console.log("Equal");
+function calculate(){
+    input_element.value = eval(input_element.value);
 };
 
-function append_value(buttonvalue){
-    console.log(buttonvalue);
-    input_element.value += buttonvalue;
+function append_value(button_value){
+    input_element.value += button_value;
 };
