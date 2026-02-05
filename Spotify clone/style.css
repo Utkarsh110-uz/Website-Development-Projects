@@ -1,0 +1,63 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+.btn{
+    border: none;
+    outline: none;
+    background-color: #4A4A4A;
+    border-radius: 100px;
+    padding: 6px;
+    margin: 0px 0px 0px 17px;
+}
+
+.inp{
+    border: none;
+    padding: 10px 105px 12px 50px;
+    outline: none;
+    font-size: 20px;
+    border-radius: 31px;
+    background-color: rgb(59, 57, 57);
+}
+
+.inp::placeholder{
+    color: rgb(204, 203, 203);
+}
+
+.main{
+    display: flex;
+    gap: 70px;
+}
+
+.content{
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+}
+
+.main-inp{
+    position: relative;
+}
+
+#img-1{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+#img-2{
+    position: absolute;
+    top: 6px;
+    right: 32px;
+}
+
+#img-3{
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
+
+.spo-icon{
+    margin: 0px 0px 0px 15px;
+}
