@@ -1,63 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+
 body{
     background-color: black;
     color: white;
 }
 
-.btn{
-    border: none;
-    outline: none;
-    background-color: #4A4A4A;
-    border-radius: 100px;
-    padding: 6px;
-    margin: 0px 0px 0px 17px;
+.left{
+    width: 25vw;
+    padding: 10px;
 }
 
-.inp{
-    border: none;
-    padding: 10px 105px 12px 50px;
-    outline: none;
-    font-size: 20px;
-    border-radius: 31px;
-    background-color: rgb(59, 57, 57);
-}
-
-.inp::placeholder{
-    color: rgb(204, 203, 203);
-}
-
-.main{
-    display: flex;
-    gap: 70px;
-}
-
-.content{
-    display: flex;
-    justify-content: end;
-    gap: 20px;
-}
-
-.main-inp{
+.right{
+    width: 75vw;
+    margin-top: 13px;
     position: relative;
 }
 
-#img-1{
-    position: absolute;
-    top: 10px;
-    left: 10px;
+.home ul li{
+    list-style: none;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 15px;
 }
 
-#img-2{
+.footer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    font-size: 11px;
     position: absolute;
-    top: 6px;
-    right: 32px;
+    bottom: 10px;
 }
 
-#img-3{
-    position: absolute;
-    top: 8px;
-    right: 16px;
+.footer a{
+    color: gray;
+    text-decoration: none;
 }
 
-.spo-icon{
-    margin: 0px 0px 0px 15px;
+.library{
+    min-height: 80vh;
+    position: relative;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(54, 54, 54, 1);
+}
+
+.header > *{
+    padding: 20px;
+}
+
+.spotify-header{
+    padding: 16px;
+}
+
+.card{
+    width: 210px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #252525;
+    position: relative;
+}
+
+.card img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.card > *{
+    padding-top: 10px;
+}
+
+.cardcontainer{
+    margin: 30px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    max-height: 70vh;
+}
+
+.btn{
+    border-radius: 100px;
+    padding: 7px 6px 6px 9px;
+    background-color: rgb(97, 218, 97);
+    border: none;
+    outline: none;
+}
+
+.play-btn{
+    position: absolute;
+    bottom: 107px;
+    right: 20px;
+    opacity: 0;
+    transition: all .96s ease-out;
+}
+
+.play-btn:hover{
+    opacity: 1;
+}
+
+.signup-btn{
+    border: none;
+    outline: none;
+    background-color: rgb(54, 54, 54, 1);
+    color: gray;
+    padding-right: 20px;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.signup-btn:hover{
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.login-btn{
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 109px;
+}
+
+.play{
+    position: absolute;
+    bottom: 2px;
+    background-color: #8cc08c;
+    width: 100%;
+    padding: 12px;
+}
+
+.song-btn{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
 }
