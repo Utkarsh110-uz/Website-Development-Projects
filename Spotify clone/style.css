@@ -139,7 +139,7 @@ body{
     position: absolute;
     bottom: 2px;
     background-color: #8cc08c;
-    width: 100%;
+    width: 90%;
     padding: 12px;
 }
 
@@ -147,4 +147,14 @@ body{
     display: flex;
     justify-content: center;
     gap: 16px;
+}
+
+.songslist ul{
+    padding: 0px 30px;
+    list-style-type: decimal;
+}
+
+.heading{
+    display: flex;
+    gap: 10px;
 }
