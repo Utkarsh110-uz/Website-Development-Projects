@@ -18,7 +18,7 @@ async function main() {
     let songs =  await getsongs();
     console.log(songs);
 
-    var audio = new Audio(songs[0]);
+    var audio = new Audio(songs[1]);
 
     const button = document.querySelector(".playbutton");
     button.addEventListener("click", () => {
@@ -31,7 +31,7 @@ async function main() {
 
     let songul = document.querySelector(".songslist").getElementsByTagName("ul")[0]
     for (const song of songs){
-        songul.innerHTML = songul.innerHTML + `<li> ${song} </li>`;
+        songul.innerHTML = songul.innerHTML + `<li> ${song.replaceAll("%20", " ")} </li>`;
     }
 };
 main()

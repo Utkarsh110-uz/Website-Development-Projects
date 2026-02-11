@@ -150,8 +150,13 @@ body{
 }
 
 .songslist ul{
-    padding: 0px 30px;
+    padding: 0px 20px;
+}
+
+.songslist ul li{
     list-style-type: decimal;
+    display: flex;
+    gap: 20px;
 }
 
 .heading{
