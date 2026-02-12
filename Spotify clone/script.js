@@ -1,3 +1,20 @@
+let currentsong = new Audio();
+
+function secondstominutes_seconds(seconds) {
+    if (isNaN(seconds) || seconds < 0) {
+        return "Invalid Time"
+    }
+
+    const minutes = Math.floor(seconds / 60);
+    const remaining_seconds = Math.floor(seconds % 60)
+
+    const formated_miutes = String(minutes).padStart(2, "0");
+    const formated_seconds = String(remaining_seconds).padStart(2, "0");
+
+    return `${formated_miutes}:${formated_seconds}`;
+};
+
+
 async function getsongs() {
     let a = await fetch("http://127.0.0.1:3000/Songs/");
     let response = await a.text();
@@ -14,24 +31,59 @@ async function getsongs() {
     return songs;
 };
 
+const playmusic = (track) => {
+    currentsong.src = "/Songs/" + track;
+    currentsong.play();
+    play.src = "Assests/pause.svg";
+    document.querySelector(".songinfo").innerHTML = track;
+    document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
+}
+
 async function main() {
-    let songs =  await getsongs();
-    console.log(songs);
 
-    var audio = new Audio(songs[1]);
+    // Get all the songs
+    let songs = await getsongs();
 
-    const button = document.querySelector(".playbutton");
-    button.addEventListener("click", () => {
-        audio.play();
-    });
-
-    audio.addEventListener("loadeddata", ()=>{
-        console.log(audio.duration, audio.currentSrc, audio.currentTime);
-    });
-
+    // Get all the songs in the playlist
     let songul = document.querySelector(".songslist").getElementsByTagName("ul")[0]
-    for (const song of songs){
-        songul.innerHTML = songul.innerHTML + `<li> ${song.replaceAll("%20", " ")} </li>`;
+    for (const song of songs) {
+        songul.innerHTML = songul.innerHTML + `<li><img src="Assests/music.svg" alt="music-svg">
+                            <div class="info">
+                                <div>${song.replaceAll("%20", " ")}</div>
+                                <div>Song Artist</div>
+                            </div>
+                            <div class="playnow">
+                                <span>Play now</span>
+                                <img class="invert" src="Assests/play-button.svg" alt="play-button-svg">
+                            </div></li>`;
     }
+
+    // Attach an event listner to each song
+    Array.from(document.querySelector(".songslist").getElementsByTagName("li")).forEach(element => {
+        element.addEventListener("click", e => {
+            console.log(element.querySelector(".info").firstElementChild.innerHTML);
+            playmusic(element.querySelector(".info").firstElementChild.innerHTML.trim());
+        })
+    });
+
+    // Attach an event listner to previous, next and play buttons
+    play.addEventListener("click", () => {
+        if (currentsong.paused) {
+            currentsong.play()
+            play.src = "Assests/pause.svg"
+        }
+        else {
+            currentsong.pause()
+            play.src = "Assests/play-button.svg"
+        }
+    })
+
+    // Listen for timupdate event
+    currentsong.addEventListener("timeupdate", () => {
+        // console.log(currentsong.currentTime, currentsong.duration);
+        document.querySelector(".songtime").innerHTML = `${secondstominutes_seconds(currentsong.currentTime)}/${secondstominutes_seconds(currentsong.duration)}`
+    });
+
 };
-main()
+
+main();

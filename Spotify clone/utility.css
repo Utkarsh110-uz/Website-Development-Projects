@@ -1,6 +1,5 @@
 .border{
-    border: 2px solid red;
-    margin: 3px;
+    border: 2px solid white;
 }
 
 .flex{
@@ -38,4 +37,8 @@
 
 .p-1{
     padding: 10px 0px 10px 25px;
+}
+
+.invert{
+    filter: invert(1);
 }
