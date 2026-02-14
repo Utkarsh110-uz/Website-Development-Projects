@@ -3,7 +3,7 @@ let currentsong = new Audio();
 function secondstominutes_seconds(seconds) {
     if (isNaN(seconds) || seconds < 0) {
         return "Invalid Time"
-    }
+    };
 
     const minutes = Math.floor(seconds / 60);
     const remaining_seconds = Math.floor(seconds % 60)
@@ -13,7 +13,6 @@ function secondstominutes_seconds(seconds) {
 
     return `${formated_miutes}:${formated_seconds}`;
 };
-
 
 async function getsongs() {
     let a = await fetch("http://127.0.0.1:3000/Songs/");
@@ -31,18 +30,21 @@ async function getsongs() {
     return songs;
 };
 
-const playmusic = (track) => {
+const playmusic = (track, pause=false) => {
     currentsong.src = "/Songs/" + track;
-    currentsong.play();
-    play.src = "Assests/pause.svg";
-    document.querySelector(".songinfo").innerHTML = track;
+    if(!pause){
+        currentsong.play();
+        play.src = "Assests/pause.svg";
+    }
+    document.querySelector(".songinfo").innerHTML = decodeURI(track);
     document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
-}
+};
 
 async function main() {
 
     // Get all the songs
     let songs = await getsongs();
+    playmusic(songs[0], true);
 
     // Get all the songs in the playlist
     let songul = document.querySelector(".songslist").getElementsByTagName("ul")[0]
@@ -56,7 +58,7 @@ async function main() {
                                 <span>Play now</span>
                                 <img class="invert" src="Assests/play-button.svg" alt="play-button-svg">
                             </div></li>`;
-    }
+    };
 
     // Attach an event listner to each song
     Array.from(document.querySelector(".songslist").getElementsByTagName("li")).forEach(element => {
@@ -76,7 +78,7 @@ async function main() {
             currentsong.pause()
             play.src = "Assests/play-button.svg"
         }
-    })
+    });
 
     // Listen for timupdate event
     currentsong.addEventListener("timeupdate", () => {
