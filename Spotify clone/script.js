@@ -84,8 +84,25 @@ async function main() {
     currentsong.addEventListener("timeupdate", () => {
         // console.log(currentsong.currentTime, currentsong.duration);
         document.querySelector(".songtime").innerHTML = `${secondstominutes_seconds(currentsong.currentTime)}/${secondstominutes_seconds(currentsong.duration)}`
+        document.querySelector(".circle").style.left = (currentsong.currentTime/currentsong.duration) * 100 + "%";
     });
 
+    // Add an event listner to seekbar
+    document.querySelector(".seekbar").addEventListener("click", e=>{
+        let percent = (e.offsetX/e.target.getBoundingClientRect().width) * 100;
+        document.querySelector(".circle").style.left = percent + "%";
+        currentsong.currentTime = ((currentsong.duration) * percent ) / 100;
+    });
+
+    // Add event listner to hamburger
+    document.querySelector(".hamburger").addEventListener("click", ()=>{
+        document.querySelector(".left").style.left = "0";
+    });
+
+    // Add an event listener for close button
+    document.querySelector(".close").addEventListener("click", ()=>{
+        document.querySelector(".left").style.left = "-120%";
+    });
 };
 
 main();

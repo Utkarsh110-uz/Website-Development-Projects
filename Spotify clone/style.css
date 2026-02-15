@@ -84,7 +84,7 @@ body{
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 70vh;
 }
 
@@ -142,7 +142,7 @@ body{
     width: 70vw;
     padding: 12px;
     border-radius: 12px;
-    height: 40px;
+    min-height: 40px;
 }
 
 .song-btn{
@@ -195,12 +195,13 @@ body{
 }
 
 .seekbar{
-    height: 2px;
+    height: 4px;
     width: 70vw;
     border-radius: 10px;
     background-color: white;
     position: absolute;
     bottom: 5px;
+    cursor: pointer;
 }
 
 .circle{
@@ -225,4 +226,41 @@ body{
 
 .songinfo, .songtime{
     padding: 0px 12px;
+}
+
+.hamburger{
+    display: none;
+}
+
+.close{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    width: 45px;
+}
+
+@media (max-width: 1400px){
+    .left{
+        position: absolute;
+        z-index: 1;
+        left: -120%;
+        transition: all .3s;
+        width: 370px;
+    }
+
+    .right{
+        width: 100vw;
+    }
+
+    .play{
+        width: calc(100vw - 60px);
+    }
+
+    .seekbar{
+        width: calc(100vw - 70px);
+    }
+
+    .hamburger{
+        display: inline;
+    }
 }
