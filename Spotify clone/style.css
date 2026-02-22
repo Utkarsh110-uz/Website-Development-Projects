@@ -252,8 +252,10 @@ body{
     align-items: center;
 }
 
-.volume:hover:after{
-    content: "abcd";
+.volume{
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 @media (max-width: 1400px){
