@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root{
+    --opa: 0;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -72,6 +76,12 @@ body{
     border-radius: 5px;
     background-color: #252525;
     position: relative;
+    transition: all .10s;
+}
+
+.card:hover{
+    background-color: rgb(77, 77, 77);
+    --opa: 1;
 }
 
 .card img{
@@ -104,12 +114,8 @@ body{
     position: absolute;
     bottom: 107px;
     right: 20px;
-    opacity: 0;
+    opacity: var(--opa);
     transition: all .96s ease-out;
-}
-
-.play-btn:hover{
-    opacity: 1;
 }
 
 .signup-btn{
@@ -256,6 +262,10 @@ body{
     display: flex;
     align-items: center;
     gap: 5px;
+}
+
+.volume input{
+    cursor: pointer;
 }
 
 @media (max-width: 1400px){

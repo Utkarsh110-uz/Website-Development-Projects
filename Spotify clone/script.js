@@ -64,7 +64,6 @@ async function main() {
     // Attach an event listner to each song
     Array.from(document.querySelector(".songslist").getElementsByTagName("li")).forEach(element => {
         element.addEventListener("click", e => {
-            // console.log(element.querySelector(".info").firstElementChild.innerHTML);
             playmusic(element.querySelector(".info").firstElementChild.innerHTML.trim());
         })
     });
@@ -83,7 +82,6 @@ async function main() {
 
     // Listen for timeupdate event
     currentsong.addEventListener("timeupdate", () => {
-        // console.log(currentsong.currentTime, currentsong.duration);
         document.querySelector(".songtime").innerHTML = `${secondstominutes_seconds(currentsong.currentTime)}/${secondstominutes_seconds(currentsong.duration)}`
         document.querySelector(".circle").style.left = (currentsong.currentTime / currentsong.duration) * 100 + "%";
     });
@@ -106,22 +104,48 @@ async function main() {
     });
 
     // Add an event listener to previous button
-    previous.addEventListener("click", ()=>{
+    previous.addEventListener("click", () => {
         currentsong.pause();
         let index = songs.indexOf(currentsong.src.split("/").slice(-1)[0]);
-        if((index-1)>=0){
-            playmusic(songs[index-1]);
+        if ((index - 1) >= 0) {
+            playmusic(songs[index - 1]);
         };
     });
 
     // Add an event listener to next button
-    next.addEventListener("click", ()=>{
+    next.addEventListener("click", () => {
         currentsong.pause();
         let index = songs.indexOf(currentsong.src.split("/").slice(-1)[0]);
-        if((index+1)<songs.length){
-            playmusic(songs[index+1]);
+        if ((index + 1) < songs.length) {
+            playmusic(songs[index + 1]);
         };
     });
+
+    // Select elements
+    let volumeRange = document.querySelector(".volume input");
+    let volbtn = document.querySelector("#volbtn"); // adjust if needed
+
+    // Volume slider change
+    volumeRange.addEventListener("input", (e) => {
+        currentsong.volume = e.target.value / 100;
+    });
+
+    // Volume button toggle
+    volbtn.addEventListener("click", () => {
+
+        if (currentsong.volume > 0) {
+            // Mute
+            currentsong.volume = 0;
+            volbtn.src = "Assests/volume-off.svg";
+        }
+        else {
+            // Restore from slider value
+            currentsong.volume = volumeRange.value / 100;
+            volbtn.src = "Assests/volume.svg";
+        }
+
+    });
+
 };
 
 main();
