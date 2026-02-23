@@ -82,6 +82,7 @@ body{
 .card:hover{
     background-color: rgb(77, 77, 77);
     --opa: 1;
+    cursor: pointer;
 }
 
 .card img{

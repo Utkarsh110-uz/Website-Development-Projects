@@ -1,5 +1,6 @@
 let currentsong = new Audio();
 let songs;
+let current_folder;
 
 function secondstominutes_seconds(seconds) {
     if (isNaN(seconds) || seconds < 0) {
@@ -15,8 +16,9 @@ function secondstominutes_seconds(seconds) {
     return `${formated_miutes}:${formated_seconds}`;
 };
 
-async function getsongs() {
-    let a = await fetch("http://127.0.0.1:3000/Songs/");
+async function getsongs(folder) {
+    current_folder = folder;
+    let a = await fetch(`/${folder}/`);
     let response = await a.text();
     let element = document.createElement("div");
     element.innerHTML = response;
@@ -25,17 +27,17 @@ async function getsongs() {
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split("/Songs/")[1]);
+            songs.push(element.href.split(`/${folder}/`)[1]);
         };
     };
     return songs;
 };
 
 const playmusic = (track, pause = false) => {
-    currentsong.src = "/Songs/" + track;
+    currentsong.src = `/${current_folder}/` + track;
     if (!pause) {
         currentsong.play();
-        play.src = "Assests/pause.svg";
+        play.src = "Assets/pause.svg";
     }
     document.querySelector(".songinfo").innerHTML = decodeURI(track);
     document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
@@ -44,20 +46,20 @@ const playmusic = (track, pause = false) => {
 async function main() {
 
     // Get all the songs
-    songs = await getsongs();
+    songs = await getsongs("Songs/English_songs");
     playmusic(songs[0], true);
 
     // Get all the songs in the playlist
     let songul = document.querySelector(".songslist").getElementsByTagName("ul")[0]
     for (const song of songs) {
-        songul.innerHTML = songul.innerHTML + `<li><img src="Assests/music.svg" alt="music-svg">
+        songul.innerHTML = songul.innerHTML + `<li><img src="Assets/music.svg" alt="music-svg">
                             <div class="info">
                                 <div>${song.replaceAll("%20", " ")}</div>
                                 <div>Song Artist</div>
                             </div>
                             <div class="playnow">
                                 <span>Play now</span>
-                                <img class="invert" src="Assests/play-button.svg" alt="play-button-svg">
+                                <img class="invert" src="Assets/play-button.svg" alt="play-button-svg">
                             </div></li>`;
     };
 
@@ -72,11 +74,11 @@ async function main() {
     play.addEventListener("click", () => {
         if (currentsong.paused) {
             currentsong.play()
-            play.src = "Assests/pause.svg"
+            play.src = "Assets/pause.svg"
         }
         else {
             currentsong.pause()
-            play.src = "Assests/play-button.svg"
+            play.src = "Assets/play-button.svg"
         }
     });
 
@@ -136,16 +138,15 @@ async function main() {
         if (currentsong.volume > 0) {
             // Mute
             currentsong.volume = 0;
-            volbtn.src = "Assests/volume-off.svg";
+            volbtn.src = "Assets/volume-off.svg";
         }
         else {
             // Restore from slider value
             currentsong.volume = volumeRange.value / 100;
-            volbtn.src = "Assests/volume.svg";
+            volbtn.src = "Assets/volume.svg";
         }
 
     });
-
 };
 
 main();
