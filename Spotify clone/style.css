@@ -284,6 +284,7 @@ body{
 
     .play{
         width: calc(100vw - 60px);
+        min-height: 33px;
     }
 
     .seekbar{
@@ -306,5 +307,25 @@ body{
 
     .right{
         margin: 0;
+    }
+}
+
+@media (max-width: 700px){
+    .play{
+        height: 15vh;
+    }
+    .above{
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .songinfo{
+        display: flex;
+        justify-content: center;
+        margin: auto;
+    }
+    .timevolume{
+        display: flex;
+        justify-content: center;
     }
 }
