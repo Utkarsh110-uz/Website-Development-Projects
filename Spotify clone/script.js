@@ -93,7 +93,7 @@ async function display_albums() {
             let folder = parts[1];
 
             try {
-                let a = await fetch(`/songs/${folder}/info.json`);
+                let a = await fetch(`/Songs/${folder}/info.json`);
 
                 if (!a.ok) continue;
 
@@ -117,6 +117,7 @@ async function display_albums() {
     Array.from(document.getElementsByClassName("card")).forEach(e => {
         e.addEventListener("click", async item => {
             songs = await getsongs(`Songs/${item.currentTarget.dataset.folder}`);
+            playmusic(songs[0]);
         });
     });
 };
@@ -126,7 +127,7 @@ async function main() {
     display_albums();
 
     // Get all the songs
-    songs = await getsongs("Songs/English_songs");
+    songs = await getsongs("Songs/Calm_music");
     playmusic(songs[0], true);
 
     // Attach an event listner to previous, next and play buttons
