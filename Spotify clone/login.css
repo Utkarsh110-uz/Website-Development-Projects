@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    background-color: black;
+}
+
+.main{
+    height: 80vh;
+    width: 40vw;
+    border: 2px solid red;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main h1 {
+    font-size: 48px;
+}
+
+.upper-head{
+    text-align: center;
+}
+
+.login-details{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#email{
+    width: 310px;
+    height: 35px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: black;
+    padding-left: 10px;
+    font-size: 16px;
+}
+
+#email:hover{
+    border: 1px solid white;
+}
+
+#email:focus{
+    outline: 1px solid white;
+}
+
+.btn{
+    background-color: #1fd760;
+    border: none;
+    outline: none;
+    color: black;
+    border-radius: 20px;
+    padding: 8px 32px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.btn:hover{
+    transform: scale(1.1);
+}
+
+.nothing{
+    margin: 15px 0px;
+}
