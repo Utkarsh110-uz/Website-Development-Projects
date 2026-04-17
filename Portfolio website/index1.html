@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+NO:wght@100..400&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 66px;
+            border-bottom: 1px solid rgba(26, 25, 22, 0.08);
+            padding: 20px 20px;
+            font-size: 15px;
+            cursor: pointer;
+            font-family: "Inter", sans-serif;
+        }
+
+        .navbar ul li {
+            padding: 7px 7px;
+        }
+
+        .navbar ul li:hover {
+            border-radius: 12px;
+            background-color: rgb(230, 225, 225);
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+        }
+
+        .name{
+            font-size: 60px;
+            width: 100px;
+            font-weight: 200;
+        }
+
+        .aboutme p{
+            font-family: "Open Sans", sans-serif;
+        }
+
+        .second-name{
+            color: #c65d2e;
+        }
+
+        .main3 img{
+            border-radius: 20px;
+        }
+
+        .main1 p{
+            width: 500px;
+            text-align: left;
+        }
+
+        .btn{
+            border: none;
+            outline: none;
+            padding: 12px 15px;
+            border-radius: 12px;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 12px 6px;
+        }
+
+        .project-btn{
+            background-color: black;
+            color: white;
+            transition: transform .23s ease-in-out;
+        }
+
+        .project-btn:hover{
+            transform: translateY(-5px);
+        }
+
+        .touch-btn{
+            transition: transform .23s ease-in-out;
+            background-color: transparent;
+            border: 1px solid lightgray;
+        }
+
+        .touch-btn:hover{
+            transform: translateY(-5px);
+        }
+
+        .main1>p:first-child{
+            background-color: #f2f0eb;
+            border: 1px solid rgba(26, 25, 22, 0.08);
+            border-radius: 99px;
+            width: 250px;
+            letter-spacing: 1px;
+            text-align: center;
+            font-size: 11px;
+            color: #6b6760;
+            font-weight: 400;
+        }
+
+        .aboutme{
+            display: flex;
+            justify-content: space-evenly;
+            gap: 150px;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .h1font{
+            font-family: "Playwrite NO", cursive;
+        }
+
+        .skills h1{
+            font-weight: bolder;
+            font-size: 45px;
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <ul>
+                <li><a href="#abouttme"></a>About Me</li>
+                <li><a href="#skillss"></a>Skills</li>
+                <li><a href=""></a>Projects</li>
+                <li><a href=""></a>Experience</li>
+                <li><a href=""></a>Contact</li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="aboutme" id="abouttme">
+
+            <div class="main1">
+                <p>Available for new opportunities</p>
+                <h1 class="name h1font">
+                    <span class="first-name">Utkarsh</span>
+                    <span class="second-name">Sharma</span>
+                </h1>
+                <p>Frontend Developer</p>
+                <p>I'm an aspiring Frontend Developer with a strong interest in building clean, responsive, and user-friendly web interfaces using HTML, CSS, and JavaScript. I believe in learning by building, and I enjoy turning ideas into real, working projects. Let's connect and build something meaningful together.
+                </p>
+                <button class="btn project-btn"><img src="main-menu.svg" alt="main-menu-svg"><a href=""></a>View Projects</button>
+                <button class="btn touch-btn"><img src="gmail.svg" alt="gmail-svg"><a href=""></a>Get in Touch</button>
+            </div>
+
+            <!-- <div class="main2">
+                <p>I'm an aspiring Frontend Developer with a strong interest in building clean, responsive, and user-friendly web interfaces using HTML, CSS, and JavaScript. I believe in learning by building, and I enjoy turning ideas into real, working projects. Let's connect and build something meaningful together.
+                </p>
+                <button class="btn project-btn"><img src="main-menu.svg" alt="main-menu-svg"><a href=""></a>View Projects</button>
+                <button class="btn touch-btn"><img src="gmail.svg" alt="gmail-svg"><a href=""></a>Get in Touch</button>
+            </div> -->
+
+            <div class="main3">
+                <img src="Profile-pic.jpg" alt="profile-pic" height="300">
+            </div>
+
+        </div>
+
+        <div class="skills" id="skillss">
+            <h3>SKILLS</h3>
+            <h1 class="h1font">
+                <span>My</span>
+                <span class="second-name">toolkit</span>
+                <span>& expertise</span>
+            </h1>
+
+            <div class="techskills">
+                <h2>Technical Skills</h2>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
